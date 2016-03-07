@@ -4,7 +4,6 @@ s.version = '0.1.0'
 s.license = 'MIT'
 s.summary = 'GCD convenience Api '
 s.homepage = 'https://github.com/beeth0ven/BNQueue'
-s.social_media_url = 'https://twitter.com/LuoJie6'
 s.author = { "Luo Jie" => "beeth0vendev@gmail.com" }
 s.source = { :git => "https://github.com/beeth0ven/BNQueue.git", :tag => "#{s.version}"}
 
