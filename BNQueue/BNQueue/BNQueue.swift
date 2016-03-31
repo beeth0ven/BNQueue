@@ -53,6 +53,19 @@ public enum BNQueue: ExcutableQueue {
             return dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)
         }
     }
+    
+    public static func scheduledTimer(timeInterval timeInterval: NSTimeInterval = 1, duration: NSTimeInterval, repeatClosure: (remain: NSTimeInterval) -> Void, didFinish: (() -> Void)? = nil) {
+        var duration = duration
+        BNQueue.Main.executeAfter(seconds: timeInterval) { 
+            duration -= timeInterval
+            repeatClosure(remain: duration)
+            if duration <= 0 {
+                didFinish?()
+            } else {
+                scheduledTimer(timeInterval: timeInterval, duration: duration, repeatClosure: repeatClosure, didFinish: didFinish)
+            }
+        }
+    }
 }
 
 
